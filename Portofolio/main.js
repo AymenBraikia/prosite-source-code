@@ -77,3 +77,7 @@ if (screen.width <= 450) {
     img.style.width = screen.width * 90 / 100 + "px";
     img.style.height = screen.width * 90 / 100 + "px";
 }
+let githubView = document.querySelector(".viewGithub");
+githubView.onclick = () => {
+    open("https://github.com/AymenBraikia/prosite-source-code","_blank");
+};

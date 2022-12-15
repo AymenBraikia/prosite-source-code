@@ -3,7 +3,7 @@ let height2 = screen.height * 65 / 100 + "px";
 let height3 = screen.height * 40 / 100 + "px";
 let height4 = screen.height * 40 / 100 + "px";
 let height5 = screen.height * 70 / 100 + "px";
-let height6 = screen.height * 30 / 100 + "px";
+let height6 = screen.height * 50 / 100 + "px";
 document.querySelector(".header").style.height = height;
 document.querySelector(".partOne").style.height = height2;
 document.querySelector(".partTwo").style.height = height3;
@@ -51,6 +51,7 @@ light.onclick = function () {
 
     if (lightac.classList.contains("Active")) {
         // in light mode
+        scrollToTopIcon.setAttribute("stroke","black");
         root.style.setProperty("--backColor","white");
         root.style.setProperty("--color","black");
         root.style.setProperty("--gettingStarted","white");
@@ -59,9 +60,13 @@ light.onclick = function () {
         root.style.setProperty("--svgBorders","black");
         root.style.setProperty("--border","3px solid black");
         root.style.setProperty("--HeaderColor","white");
-        scrollToTopIcon.setAttribute("stroke","black");
+        root.style.setProperty("--linksColor","black");
+        root.style.setProperty("--headerBG","#dcdcdc75");
+        root.style.setProperty("--secBgColor","#0000006e");
+
     } else {
         // in dark mode
+        scrollToTopIcon.setAttribute("stroke","white");
         root.style.setProperty("--backColor","#1f1d2b");
         root.style.setProperty("--color","white");
         root.style.setProperty("--gettingStarted","rgb(60 58 70)");
@@ -70,7 +75,10 @@ light.onclick = function () {
         root.style.setProperty("--svgBorders","white");
         root.style.setProperty("--border","3px solid white");
         root.style.setProperty("--HeaderColor","#151320");
-        scrollToTopIcon.setAttribute("stroke","white");
+        root.style.setProperty("--headerBG","#010101bd");
+        root.style.setProperty("--linksColor","#a6a6a6");
+        root.style.setProperty("--secBgColor","#ffffff2b");
+
     }
 };
 dark.onclick = function () {
@@ -78,6 +86,7 @@ dark.onclick = function () {
     darkac.classList.toggle("Active");
     if (lightac.classList.contains("Active")) {
         // light mode
+        scrollToTopIcon.setAttribute("stroke","black");
         root.style.setProperty("--backColor","white");
         root.style.setProperty("--color","black");
         root.style.setProperty("--gettingStarted","white");
@@ -86,9 +95,14 @@ dark.onclick = function () {
         root.style.setProperty("--svgBorders","black");
         root.style.setProperty("--border","3px solid black");
         root.style.setProperty("--HeaderColor","white");
-        scrollToTopIcon.setAttribute("stroke","black");
+        root.style.setProperty("--headerBG","#dcdcdc75");
+        root.style.setProperty("--linksColor","black");
+        root.style.setProperty("--secBgColor","#0000006e");
+
+
     } else {
         // dark mode
+        scrollToTopIcon.setAttribute("stroke","white");
         root.style.setProperty("--backColor","#1f1d2b");
         root.style.setProperty("--color","white");
         root.style.setProperty("--gettingStarted","rgb(60 58 70)");
@@ -97,7 +111,9 @@ dark.onclick = function () {
         root.style.setProperty("--svgBorders","white");
         root.style.setProperty("--border","3px solid white");
         root.style.setProperty("--HeaderColor","#151320");
-        scrollToTopIcon.setAttribute("stroke","white");
+        root.style.setProperty("--headerBG","#010101bd");
+        root.style.setProperty("--linksColor","#a6a6a6");
+        root.style.setProperty("--secBgColor","#ffffff2b");
     }
 };
 
@@ -270,9 +286,8 @@ let hte = document.querySelector("html");
 let mainCnt = document.querySelector(".mainContent");
 if (screen.width <= 450) {
     document.querySelector("html").width = screen.width + "px";
-    console.log(document.querySelector("html").clientWidth);
     mainCnt.style.width = document.querySelector("html").clientWidth + "px";
-    document.querySelector(".Top").style.display = "none"
+    document.querySelector(".Top").style.display = "none";
 
 }
 let phoneSideBar = document.querySelector(".Plist");
@@ -295,5 +310,39 @@ phoneSideBar.onclick = () => {
             cross.classList.remove("work");
             ln.classList.remove("work");
         },1);
+    }
+};
+
+
+document.onscroll = function () {
+    if (scrollY < 891.2) {
+        sections.forEach((ele) => {
+            ele.classList.remove("active");
+            sections[0].classList.add("active");
+        });
+    }
+    if (scrollY >= 891.2 && scrollY < 1080) {
+        sections.forEach((ele) => {
+            ele.classList.remove("active");
+            sections[1].classList.add("active");
+        });
+    }
+    if (scrollY >= 1080 && scrollY <= 1714.5) {
+        sections.forEach((ele) => {
+            ele.classList.remove("active");
+            sections[2].classList.add("active");
+        });
+    }
+    if (scrollY >= 1714.6 && scrollY <= 1948) {
+        sections.forEach((ele) => {
+            ele.classList.remove("active");
+            sections[3].classList.add("active");
+        });
+    }
+    if (scrollY >= 1948 && scrollY <= 2071) {
+        sections.forEach((ele) => {
+            ele.classList.remove("active");
+            sections[4].classList.add("active");
+        });
     }
 };
